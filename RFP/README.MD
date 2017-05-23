@@ -1,0 +1,2 @@
+# Request for Proposal
+Request for Proposal (RFP) is a useful practice for both institutions and vendors to build mutual trust and understandings during digitization process. The institutions can detail their expectations in terms of handling, workflows and final deliverables in order to select the vendor/contractor who can fulfill the needs. A few guidelines and examples can be found under this folder.
