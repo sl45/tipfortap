@@ -83,9 +83,9 @@ Once the bag is moved/copied to another location, ``--validate`` can examine the
     
     bagit.py --validate (outputfile)
     
-At this stage, [rync](https://wiki.archlinux.org/index.php/rsync) command can come in handy to transfer one package remotely to a storage location. It can be used as an alternative option for the ``cp`` command, especially for copying larger files.
+At this stage, [rsync](https://wiki.archlinux.org/index.php/rsync) command can come in handy to transfer one package remotely to a storage location. It can be used as an alternative option for the ``cp`` command, especially for copying larger files.
 
-    rync -a --progress --remove-source-files (inputfile) (destination folder)
+    rsync -a --progress --remove-source-files (inputfile) (destination folder)
 
 *``-a`` means all files are archived and their characteristics are preserved. ``--progress`` show progress during transfer. ``--remove-surce-files`` delete the source files after the transfer is complete.*
 
