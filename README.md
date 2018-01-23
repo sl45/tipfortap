@@ -65,6 +65,10 @@ Find the location of the external carrier and take a note.
        ffmpeg -i (video file) -i (audio file) -shortest (outputfile.mov)
   
     *``-shortest`` takes the shortest file to be the final length for the output file.*
+    
+5. A framemd5 report can be generated with this command: 
+
+       ffmpeg -i MOVIE.mov -f framemd5 MOVIE.framemd5
 
 ## MediaInfo
 [MediaInfo](https://mediaarea.net/en/MediaInfo) provides detailed descriptions for AV materials. This command will export technical characteristics of the media asset as a separate XML file. 
