@@ -74,6 +74,21 @@ Find the location of the external carrier and take a note.
 [MediaInfo](https://mediaarea.net/en/MediaInfo) provides detailed descriptions for AV materials. This command will export technical characteristics of the media asset as a separate XML file. 
     
     mediainfo (inputfile) --output=XML --logfile=(outputfile.log)
+    
+## DFXML and md5deep
+Digital Forensic XML of the folder content can be generated via [md5deep](http://md5deep.sourceforge.net/md5deep.html#toc). The following command can be useful to generate dfxml and md5 checksum for the destinated folder.
+
+    cd (/folder)
+    md5deep -rl -e -d . >(/folder/dfxml.txt)
+   
+*``-r`` enables recursive mode. ``-l`` uses relative paths. ``-e`` displays progress and estimate time. ``-d`` outputs in dfxml format. ``.`` recursive starting at the current folder. ``>`` redirects output to the indicated file.*
+
+To compare content between two folders and verify md5 checksums, this command can come in handy:
+
+    md5deep -rx checksumlist.md5 (/folder)
+    md5deep -rm checksumlist.md5 (/folder)
+    
+*``-x`` negative matching mode, will display the differences. ``-m`` matching mode.*
 
 ## Bagit Python
 [Bagit-python](https://github.com/LibraryOfCongress/bagit-python) can use python library to generate bagit style package. Bagit, developed by Library of Congress, is a
@@ -93,7 +108,16 @@ At this stage, [rsync](https://wiki.archlinux.org/index.php/rsync) command can c
 
 *``-a`` means all files are archived and their characteristics are preserved. ``--progress`` show progress during transfer. ``--remove-surce-files`` delete the source files after the transfer is complete.*
 
+It can also be used to compare items in two folders
+
+    rsync -rcnv (/folder1) (/folder2)
+
+*``-r`` will recurse into the directories. ``-c`` compares file checksum. ``-n`` will do a "dry run" and make no changes. ``-v`` prints the output to stdout verbosely.*
+
+To [schedule a rsync](https://www.marksanborn.net/howto/use-rsync-for-daily-weekly-and-full-monthly-backups/), use this commands.
+
 ## Related readings and resources
 - [Archiving and distribution of CD-ROM artworks, a study of the Emulation as a Service (EaaS) tool and other proposals](http://li-ma.nl/site/sites/default/files/201611_DE_Houdbaar_Final_report_CD-ROM_Archiving_DEF.pdf), The Hague, 1 November 2016. <br>
 - [FFmpeg Cookbook for Archivists](https://avpres.net/FFmpeg/)<br>
 - [Correcting for audio/video sync issues with the ffmpeg program’s ITSOFFSET switch](https://wjwoodrow.wordpress.com/2013/02/04/correcting-for-audiovideo-sync-issues-with-the-ffmpeg-programs-itsoffset-switch/)
+- [File Signature Table](https://www.garykessler.net/library/file_sigs.html)
