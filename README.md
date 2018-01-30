@@ -66,9 +66,15 @@ Find the location of the external carrier and take a note.
   
     *``-shortest`` takes the shortest file to be the final length for the output file.*
     
-5. A framemd5 report can be generated with this command: 
+5. A frame-based md5 checksum report can be generated with this command: 
 
        ffmpeg -i MOVIE.mov -f framemd5 MOVIE.framemd5
+
+6. A batch script to batch convert files with ffmpeg:
+       
+       dir/b/s "\\folder\*.mkv" >mkvlist.txt
+       for /F "delims=;" %%F in (mkvlist.txt) do ffmpeg.exe  -i "%%F" (corresponding cmd) "%%~dF%%~pF%%~nF.mov"
+       del mkvlist.txt
 
 ## MediaInfo
 [MediaInfo](https://mediaarea.net/en/MediaInfo) provides detailed descriptions for AV materials. This command will export technical characteristics of the media asset as a separate XML file. 
@@ -112,7 +118,7 @@ It can also be used to compare items in two folders
 
     rsync -rcnv (/folder1) (/folder2)
 
-*``-r`` will recurse into the directories. ``-c`` compares file checksum. ``-n`` will do a "dry run" and make no changes. ``-v`` prints the output to stdout verbosely.*
+*``-r`` will recurse into the directories. ``-c`` compares file checksum. ``-n`` will do a "dry run" and make no changes. ``-v`` prints the output verbosely.*
 
 To [schedule a rsync](https://www.marksanborn.net/howto/use-rsync-for-daily-weekly-and-full-monthly-backups/), use this commands.
 
