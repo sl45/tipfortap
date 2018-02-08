@@ -71,10 +71,12 @@ Find the location of the external carrier and take a note.
        ffmpeg -i MOVIE.mov -f framemd5 MOVIE.framemd5
 
 6. A batch script to batch convert files with ffmpeg:
-       
+
        dir/b/s "\\folder\*.mkv" >mkvlist.txt
        for /F "delims=;" %%F in (mkvlist.txt) do ffmpeg.exe  -i "%%F" (corresponding cmd) "%%~dF%%~pF%%~nF.mov"
        del mkvlist.txt
+   
+   *This batch script would talk all the mkv files under the indicated folder and saved the newly re-encoded file under the same folder with the same file name.*
 
 ## MediaInfo
 [MediaInfo](https://mediaarea.net/en/MediaInfo) provides detailed descriptions for AV materials. This command will export technical characteristics of the media asset as a separate XML file. 
