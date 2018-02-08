@@ -76,7 +76,11 @@ Find the location of the external carrier and take a note.
        for /F "delims=;" %%F in (mkvlist.txt) do ffmpeg.exe  -i "%%F" (corresponding cmd) "%%~dF%%~pF%%~nF.mov"
        del mkvlist.txt
    
-   *This batch script would talk all the mkv files under the indicated folder and saved the newly re-encoded file under the same folder with the same file name.*
+   *This batch script would talk all the mkv files under the indicated folder and subfolders, then saved the newly re-encoded file under the same folder with the same file name.*
+   
+       for %%a in ("\*.mov) do ffmpeg.exe -i %%a -c:v ffv1 -level 3 -coder 1 -context 1 -g 1 -slices 24 -slicecrc 1 -c:a copy "\filepath\%%~na.mkv"
+       
+   *This patch script would take all the mov file under the indicated folder (exclude anything under subfolders) and saves the newly made ffv1 mkv files to the other indicated folder with the same file name. More details about the ffv1 vs Matroska option can be found [here](https://avpres.net/FFmpeg/im_MKV.html).*
 
 ## MediaInfo
 [MediaInfo](https://mediaarea.net/en/MediaInfo) provides detailed descriptions for AV materials. This command will export technical characteristics of the media asset as a separate XML file. 
@@ -97,6 +101,14 @@ To compare content between two folders and verify md5 checksums, this command ca
     md5deep -rm checksumlist.md5 (/folder)
     
 *``-x`` negative matching mode, will display the differences. ``-m`` matching mode.*
+
+To batch process asset on folder-level with folder-level dfxml and associated checksums of the files:
+
+    dir /b /ad "/MainFolderPath" >folderlist.txt
+    for /f "delims=" %%i in (folderlist.txt) do "md5deep64" -rl -e -d "MainFolderPath\%%i" > "MainFolderPath\%%i\%%~ni.txt"
+    del folderlist.txt
+    
+*This batch script will process every subfolder under the main folder individually while generating dfxml to describe content of each subfolder. The dfxml .txt file will then be saved under the associated subfolder under the same name as the subfolder*
 
 ## Bagit Python
 [Bagit-python](https://github.com/LibraryOfCongress/bagit-python) can use python library to generate bagit style package. Bagit, developed by Library of Congress, is a
