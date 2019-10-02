@@ -36,51 +36,14 @@ Find the location of the external carrier and take a note.
        ddrescue -d -r1 -b2048 /dev/cdrom cdimage mapfile
 
 ## ffmpeg
-[ffmpeg](https://ffmpeg.org/documentation.html) provides fast audio and video conversion, and can be used to extract av materials for various uses.
+[ffmpeg](https://ffmpeg.org/documentation.html) provides fast audio and video conversion, and can be used to extract av materials for various uses. More ffmpeg recipes can be found under video folder.
 
-1. Ripping DVD <br>
- Video on DVD is usually divided into several .vob files which can be located under "VIDEO_TS" folder. ffmpeg will re-encode the output video with H.264 codec as .mkv file.<br>
+Ripping DVD <br>
+Video on DVD is usually divided into several .vob files which can be located under "VIDEO_TS" folder. ffmpeg will re-encode the output video with H.264 codec as .mkv file.<br>
 
        ffmpeg -i (.vob file) -map 0:v -map 0:a -c:v libx264 -crf 18 -vf yadif -c:a flac (outputfile.mkv)
     *``-map 0:v`` copy/transcode all video streams. ``-map 0:a`` copy/transcode all audio streams. `` -c:v libx264`` use libx264 codec. ``-crf 18`` use "Constant Rate Factor" value 18. ``-vf yadif`` use YADIF deinterlacing.``-c:a flac`` use FLAC (Free Loseless Audio Codec) for audio streams. Instead of ``-crt 18``, ``-qp 18`` can also provide visually lossless result.* 
     > The range of the quantiser scale for crt and qp is from 0 to 51, where 0 is lossless, approximately 18 is "visually lossless", 23 is the default value and 51 is worst possible. Most of the non-FFmpeg-based players cannot decode H.264 files having lossless content.
-     
-2. Merging audio and video <br>
- Simply copying audio and video streams without re-encoding.
- 
-       ffmpeg -i (video file) -i (audio file) -c copy (outputfile)
-
-3. Replacing audio stream with re-encoding <br>
- If the input video file has audio track which needs to be replaced by another audio file, ffmpeg will take the video stream from the first input file combined with the audio stream from the second input file. In this case, when the audio file is longer than the video, the video will stop at the last frame as still image with audio running till the end.
-
-       ffmpeg -i (video file) -i (audio file) -c:v libx264 -preset veryslow 
-       -qp 18 -pix_fmt yuv240p -c:a aac -strict experimental -map 0:v:0 -map 1:a:0 (outputfile.mp4)
-    
-    *``-c:v libx264`` use the H.264 video codec for video stream. ``-preset`` value for H.264 are "veryslow", "slow", "medium", "fast", and "veryfast". Slower encoding gives better compression rate. ``-qp 18`` quality parameter of 18 means a visually lossless compression. ``-pix_fmt yuv 240p`` use YUV colour space with 4:2:0 chroma subsampling.* <br>
-    
-    *``-c:a aac`` re-encode audio with [AAC](https://trac.ffmpeg.org/wiki/Encode/AAC). ``-strict experimental`` is the second highest-quality AAC encoder. The [map](https://trac.ffmpeg.org/wiki/Map) option is to indicate which stream to be used for the output file.*
-  
-4. Cutting audio to fit the length of the video <br>
-
-       ffmpeg -i (video file) -i (audio file) -shortest (outputfile.mov)
-  
-    *``-shortest`` takes the shortest file to be the final length for the output file.*
-    
-5. A frame-based md5 checksum report can be generated with this command: 
-
-       ffmpeg -i MOVIE.mov -f framemd5 MOVIE.framemd5
-
-6. A batch script to batch convert files with ffmpeg:
-
-       dir/b/s "\\folder\*.mkv" >mkvlist.txt
-       for /F "delims=;" %%F in (mkvlist.txt) do ffmpeg.exe  -i "%%F" (corresponding cmd) "%%~dF%%~pF%%~nF.mov"
-       del mkvlist.txt
-   
-   *This batch script would take all the mkv files under the indicated folder and subfolders, then saved the newly re-encoded file under the same folder with the same file name.*
-   
-       for %%a in ("\*.mov) do ffmpeg.exe -i %%a -c:v ffv1 -level 3 -coder 1 -context 1 -g 1 -slices 24 -slicecrc 1 -c:a copy "\filepath\%%~na.mkv"
-       
-   *This batch script would take all the .mov file under the indicated folder (exclude anything under subfolders) and saves the newly made ffv1 mkv files to the other indicated folder with the same file name. More details about the ffv1 vs Matroska option can be found [here](https://avpres.net/FFmpeg/im_MKV.html).*
 
 ## MediaInfo
 [MediaInfo](https://mediaarea.net/en/MediaInfo) provides detailed descriptions for AV materials. This command will export technical characteristics of the media asset as a separate XML file. 
