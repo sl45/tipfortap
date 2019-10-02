@@ -76,17 +76,25 @@ Find the location of the external carrier and take a note.
        for /F "delims=;" %%F in (mkvlist.txt) do ffmpeg.exe  -i "%%F" (corresponding cmd) "%%~dF%%~pF%%~nF.mov"
        del mkvlist.txt
    
-   *This batch script would talk all the mkv files under the indicated folder and subfolders, then saved the newly re-encoded file under the same folder with the same file name.*
+   *This batch script would take all the mkv files under the indicated folder and subfolders, then saved the newly re-encoded file under the same folder with the same file name.*
    
        for %%a in ("\*.mov) do ffmpeg.exe -i %%a -c:v ffv1 -level 3 -coder 1 -context 1 -g 1 -slices 24 -slicecrc 1 -c:a copy "\filepath\%%~na.mkv"
        
-   *This patch script would take all the mov file under the indicated folder (exclude anything under subfolders) and saves the newly made ffv1 mkv files to the other indicated folder with the same file name. More details about the ffv1 vs Matroska option can be found [here](https://avpres.net/FFmpeg/im_MKV.html).*
+   *This batch script would take all the .mov file under the indicated folder (exclude anything under subfolders) and saves the newly made ffv1 mkv files to the other indicated folder with the same file name. More details about the ffv1 vs Matroska option can be found [here](https://avpres.net/FFmpeg/im_MKV.html).*
 
 ## MediaInfo
 [MediaInfo](https://mediaarea.net/en/MediaInfo) provides detailed descriptions for AV materials. This command will export technical characteristics of the media asset as a separate XML file. 
     
     mediainfo (inputfile) --output=XML --logfile=(outputfile.log)
+
+This script can batch generate xml files for videos inside a folder. It needs to be saved as .sh for Mac OS.
     
+    cd  (folder path) 
+    for f in *
+    do
+    mediainfo "$f" --output=XML > (folder path)/"${f%.mov}".xml
+    done
+
 ## DFXML and md5deep
 Digital Forensic XML of the folder content can be generated via [md5deep](http://md5deep.sourceforge.net/md5deep.html#toc). The following command can be useful to generate dfxml and md5 checksum for the destinated folder.
 
