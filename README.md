@@ -38,12 +38,11 @@ Find the location of the external carrier and take a note.
 ## ffmpeg
 [ffmpeg](https://ffmpeg.org/documentation.html) provides fast audio and video conversion, and can be used to extract av materials for various uses. More ffmpeg recipes can be found under video folder.
 
-Ripping DVD <br>
 Video on DVD is usually divided into several .vob files which can be located under "VIDEO_TS" folder. ffmpeg will re-encode the output video with H.264 codec as .mkv file.<br>
 
-       ffmpeg -i (.vob file) -map 0:v -map 0:a -c:v libx264 -crf 18 -vf yadif -c:a flac (outputfile.mkv)
-    *``-map 0:v`` copy/transcode all video streams. ``-map 0:a`` copy/transcode all audio streams. `` -c:v libx264`` use libx264 codec. ``-crf 18`` use "Constant Rate Factor" value 18. ``-vf yadif`` use YADIF deinterlacing.``-c:a flac`` use FLAC (Free Loseless Audio Codec) for audio streams. Instead of ``-crt 18``, ``-qp 18`` can also provide visually lossless result.* 
-    > The range of the quantiser scale for crt and qp is from 0 to 51, where 0 is lossless, approximately 18 is "visually lossless", 23 is the default value and 51 is worst possible. Most of the non-FFmpeg-based players cannot decode H.264 files having lossless content.
+    ffmpeg -i (.vob file) -map 0:v -map 0:a -c:v libx264 -crf 18 -vf yadif -c:a flac (outputfile.mkv)
+   
+   ``-map 0:v`` copy/transcode all video streams. ``-map 0:a`` copy/transcode all audio streams. `` -c:v libx264`` use libx264 codec. ``-crf 18`` use "Constant Rate Factor" value 18. ``-vf yadif`` use YADIF deinterlacing.``-c:a flac`` use FLAC (Free Loseless Audio Codec) for audio streams. Instead of ``-crt 18``, ``-qp 18`` can also provide visually lossless result. The range of the quantiser scale for crt and qp is from 0 to 51, where 0 is lossless, approximately 18 is "visually lossless", 23 is the default value and 51 is worst possible. Most of the non-FFmpeg-based players cannot decode H.264 files having lossless content.
 
 ## MediaInfo
 [MediaInfo](https://mediaarea.net/en/MediaInfo) provides detailed descriptions for AV materials. This command will export technical characteristics of the media asset as a separate XML file. 
