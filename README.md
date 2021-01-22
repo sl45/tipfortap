@@ -111,3 +111,4 @@ To [schedule a rsync](https://www.marksanborn.net/howto/use-rsync-for-daily-week
 - [FFmpeg Cookbook for Archivists](https://avpres.net/FFmpeg/)<br>
 - [Correcting for audio/video sync issues with the ffmpeg program’s ITSOFFSET switch](https://wjwoodrow.wordpress.com/2013/02/04/correcting-for-audiovideo-sync-issues-with-the-ffmpeg-programs-itsoffset-switch/)
 - [File Signature Table](https://www.garykessler.net/library/file_sigs.html)
+- [Sustainability of Digital Formats: Planning for Library of Congress Collections](https://www.loc.gov/preservation/digital/formats/fdd/descriptions.shtml)
