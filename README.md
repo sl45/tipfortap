@@ -86,7 +86,7 @@ To batch process asset on folder-level with folder-level dfxml and associated ch
  
 After placing all the digital asset under the designated folder with metadata, ``bagit.py`` can create a digital package with md5 checksum.
  
-    bagit.py --process 4 (inputfile)
+    bagit.py --processes 4 (inputfile)
 
 Once the bag is moved/copied to another location, ``--validate`` can examine the new bag and detect errors.  
     
