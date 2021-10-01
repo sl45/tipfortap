@@ -15,7 +15,7 @@ _____
 **Physical Damage** scale 1-5, (1) excellent (2) good (3) fair (4) poor (5)severe
 1. Emulsion Scratches
 2. Edge/Perforation Repair
-3. Base Scatches
+3. Base Scratches
 4. Perforation Damage
 5. Projector Oil & Dirt
 6. Warpage
