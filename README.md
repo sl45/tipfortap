@@ -19,16 +19,18 @@ To capture disc image, both Guymager and ddrescue can be found in BitCurator env
 Find the location of the external carrier and take a note.
 
     diskutil list
+or
+    df -h
 
-1. if the locatoin data is on a CD-ROM at /dev/cdrom <br>
+1. if the locatoin data is on a CD-ROM at /dev/disk2 <br>
        
-       ddrescue -n -b2048 /dev/cdrom (cdimage) (mapfile)
+       ddrescue -n -b2048 /dev/disk2 (cdimage) (mapfile)
     *``-n`` skip the scraping phase. ``-b`` show sector size of input device in bytes.*
        
-       ddrescue -d -r1 -b2048 /dev/cdrom (cdimage) (mapfile)
+       ddrescue -d -r1 -b2048 /dev/disk2 (cdimage) (mapfile)
     *``-d`` use direct disc access to read from input file. ``-r`` stop after the given number of retry passes.*
 
-2. if the location data is on a CD-ROM from 2 copies at /dev/cdrom.
+2. if the location data is on a CD-ROM from 2 copies at /dev/disk2.
 
        ddrescue -n -b2048 /dev/cdrom cdimage mapfile 
        ddrescue -d -b2048 /dev/cdrom cdimage mapfile
