@@ -16,10 +16,9 @@ Guymager or ddrescue -> ffmpeg -> mediainfo -> bagit-python <br>
 To capture disc image, both Guymager and ddrescue can be found in BitCurator environment. Since BitCurator wiki has provided thorough tutorials for [Guymager](https://wiki.bitcurator.net/index.php?title=Creating_a_Disk_Image_Using_Guymager), this post will only list useful syntax for [ddrescue](https://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html). In additon, ddrescue is better for copying recordable optical media because:
 > data loss develops slowly with read errors growing from the outer media region towards the inside. Two (or more) copies of the same disc can be used for data recovery by employing ddrescue.
 
-Find the location of the external carrier and take a note.
+Using either command to find the location of the external carrier and take a note.
 
     diskutil list
-or
     df -h
 
 1. if the locatoin data is on a CD-ROM at /dev/disk2 <br>
