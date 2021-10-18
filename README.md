@@ -24,7 +24,7 @@ Using either commands to find the location of the external carrier and take a no
 1. if the locatoin data is on a CD-ROM at /dev/disk2 <br>
        
        ddrescue -n -b2048 /dev/disk2 (cdimage) (mapfile)
-    *``-n`` skip the scraping phase. ``-b`` show sector size of input device in bytes.*
+    *``-n`` skip the scraping phase. ``-b`` sector size of input device in bytes (usually 512 for hard discs and 3.5" floppies, 1024 for 5.25" floppies, and 2048 for cdroms). More about [disk sector](https://en.wikipedia.org/wiki/Disk_sector).*
        
        ddrescue -d -r1 -b2048 /dev/disk2 (cdimage) (mapfile)
     *``-d`` use direct disc access to read from input file. ``-r`` stop after the given number of retry passes.*
