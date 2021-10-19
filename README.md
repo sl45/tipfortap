@@ -40,7 +40,7 @@ Video on DVD is usually divided into several .vob files which can be located und
 
     ffmpeg -i (.vob file) -map 0:v -map 0:a -c:v libx264 -crf 18 -vf yadif -c:a aac -strict experimental /outputfile.mkv
    
-   ``-map 0:v`` copy/transcode all video streams. ``-map 0:a`` copy/transcode all audio streams. `` -c:v libx264`` use libx264 codec. ``-crf 18`` use "Constant Rate Factor" value 18. ``-vf yadif`` use YADIF deinterlacing.``-c:a flac`` use FLAC (Free Loseless Audio Codec) for audio streams. Instead of ``-crt 18``, ``-qp 18`` can also provide visually lossless result. The range of the quantiser scale for crt and qp is from 0 to 51, where 0 is lossless, approximately 18 is "visually lossless", 23 is the default value and 51 is worst possible. 
+   ``-map 0:v`` copy/transcode all video streams. ``-map 0:a`` copy/transcode all audio streams. `` -c:v libx264`` use libx264 codec. ``-crf 18`` use "Constant Rate Factor" value 18. ``-vf yadif`` use YADIF deinterlacing.``-c:a flac`` use FLAC (Free Loseless Audio Codec) for audio streams. Instead of ``-crf 18``, ``-qp 18`` can also provide visually lossless result. The range of the quantiser scale for crt and qp is from 0 to 51, where 0 is lossless, approximately 18 is "visually lossless", 23 is the default value and 51 is worst possible. 
 
 If larger than 1 GB it will be splitted into several vobs. This recipe can be useful to combine multiple .vob into one mp4.<br> 
 
