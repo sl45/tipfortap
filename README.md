@@ -44,7 +44,7 @@ Video on DVD is usually divided into several .vob files which can be located und
 
 If larger than 1 GB it will be splitted into several vobs. This recipe can be useful to combine multiple .vob into one mp4.<br> 
 
-    ffmpeg -i "concat:/VIDEO_TS/VTS_01_1.VOB|/VIDEO_TS/VTS_01_2.VOB" -c:v copy -c:a aac copy /outputfile.mp4
+    ffmpeg -i "concat:/VIDEO_TS/VTS_01_1.VOB|/VIDEO_TS/VTS_01_2.VOB" -c:v copy -c:a copy /outputfile.mp4
 
 ## MediaInfo
 [MediaInfo](https://mediaarea.net/en/MediaInfo) provides detailed descriptions for AV materials. This command will export technical characteristics of the media asset as a separate XML file. 
