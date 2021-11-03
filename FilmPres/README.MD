@@ -44,10 +44,10 @@ Date:<br>
  Count the total number of splices and the method (tape/cement) used for splicing as well as sprocket repairs.
 
 4. **Issues and Degradation Identified**<br>
- Include sample image with time code, descriptions of the issues, and any alternation/correction that might have been made during the digitization process.
+ Include sample images with time code, descriptions of the issues, and any alteration/correction that might have been made during the digitization process.
 
 5. **Final Deliverables**<br>
- Include 1) the number of film reels to be delivered. If they are rehoused, please shortly describe the new film can (archival quality is highly referred), and provide annotations of the film can. 2) total number of files to be received accompanied by its file name, length, codex and technical characteristics.
+ Include 1) the number of film reels to be delivered. If they are rehoused, please shortly describe the new film can (archival quality is highly preferred), and provide annotations of the film can. 2) total number of files to be received accompanied by its file name, length, codex and technical characteristics.
 
 6. **File Checksums**<br>
  List file name with corresponding checksum for validation
