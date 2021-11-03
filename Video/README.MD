@@ -38,7 +38,7 @@ Registration Code:42VB-ZLGG-QF99-2NK6-CKEC<br>
        ffmpeg -i (video file) -i (audio file) -c copy (outputfile)
 
 2. Replacing audio stream with re-encoding <br>
- If the input video file has audio track which needs to be replaced by another audio file, ffmpeg will take the video stream from the first input file combined with the audio stream from the second input file. In this case, when the audio file is longer than the video, the video will stop at the last frame as still image with audio running till the end.
+ If the input video file has an audio track which needs to be replaced by another audio file, ffmpeg will take the video stream from the first input file combined with the audio stream from the second input file. In this case, when the audio file is longer than the video, the video will stop at the last frame as a still image with audio running till the end.
 
        ffmpeg -i (video file) -i (audio file) -c:v libx264 -preset veryslow 
        -qp 18 -pix_fmt yuv240p -c:a aac -strict experimental -map 0:v:0 -map 1:a:0 (outputfile.mp4)
@@ -65,7 +65,7 @@ Registration Code:42VB-ZLGG-QF99-2NK6-CKEC<br>
 
         ffmpeg -i input.MXF -acodec libmp3lame -vcodec libx264 -s 4096x2160 -b:v 5000k -t 2 07-4k.mp4 
         
-    Keeping the size at 4K, to work on anything else but a "film", seems quite of an over kill. It makes the encoding very slow, although the bit rate might be the culpit, as we are still at 36492 kb/s, but also size. More recipes can be found [here](http://oooooooooo.io/index.php/Convert_MXF_files_with_ffmpeg).
+    Keeping the size at 4K, to work on anything else but a "film", seems quite of an overkill. It makes the encoding very slow, although the bit rate might be the culpit, as we are still at 36492 kb/s, but also size. More recipes can be found [here](http://oooooooooo.io/index.php/Convert_MXF_files_with_ffmpeg).
 
 ### frame-based checksums
 A frame-based md5 checksum report can be generated with this command: 
@@ -79,9 +79,9 @@ A batch script to batch convert files with ffmpeg:
        for /F "delims=;" %%F in (mkvlist.txt) do ffmpeg.exe  -i "%%F" (corresponding cmd) "%%~dF%%~pF%%~nF.mov"
        del mkvlist.txt
    
-   *This batch script would take all the mkv files under the indicated folder and subfolders, then saved the newly re-encoded file under the same folder with the same file name.*
+   *This batch script would take all the mkv files under the indicated folder and subfolders, then save the newly re-encoded file under the same folder with the same file name.*
    
        for %%a in ("\*.mov) do ffmpeg.exe -i %%a -c:v ffv1 -level 3 -coder 1 -context 1 -g 1 -slices 24 -slicecrc 1 -c:a copy "\filepath\%%~na.mkv"
        
-   *This batch script would take all the .mov file under the indicated folder (exclude anything under subfolders) and saves the newly made ffv1 mkv files to the other indicated folder with the same file name. More details about the ffv1 vs Matroska option can be found [here](https://avpres.net/FFmpeg/im_MKV.html).*
+   *This batch script would take all the .mov files under the indicated folder (exclude anything under subfolders) and save the newly made ffv1 mkv files to the other indicated folder with the same file name. More details about the ffv1 vs Matroska option can be found [here](https://avpres.net/FFmpeg/im_MKV.html).*
 
