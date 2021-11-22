@@ -28,15 +28,15 @@ Using the following commands to find out about block size.
 
 1. if the location data is on a CD-ROM at /dev/disk2 <br>
        
-       ddrescue -n -r3 -b2048 /dev/disk2 cdimage.iso mapfile.log
+       ddrescue -n -r3 -b 2048 /dev/disk2 cdimage.iso mapfile.log
     *``-n`` skip the scraping phase. ``-b`` sector size of input device in bytes (usually 512 for hard discs and 3.5" floppies, 1024 for 5.25" floppies, and 2048 for cdroms). More about [disk sector](https://en.wikipedia.org/wiki/Disk_sector). ``-r`` stop after the given number of retry passes.*
 
 2. if the location data is on a CD-ROM from 2 copies at /dev/disk2.
 
-       ddrescue -n -b2048 /dev/cdrom cdimage.iso mapfile.log 
-       ddrescue -d -b2048 /dev/cdrom cdimage.iso mapfile.log
+       ddrescue -n -b 2048 /dev/cdrom cdimage.iso mapfile.log 
+       ddrescue -d -b 2048 /dev/cdrom cdimage.iso mapfile.log
        (insert the second copy)
-       ddrescue -d -r1 -b2048 /dev/cdrom cdimage.iso mapfile.log
+       ddrescue -d -r1 -b 2048 /dev/cdrom cdimage.iso mapfile.log
 
 ## ffmpeg
 [ffmpeg](https://ffmpeg.org/documentation.html) provides fast audio and video conversion, and can be used to extract av materials for various uses. More ffmpeg recipes can be found under the video folder.
